@@ -72,15 +72,15 @@
 	<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
 	<script src="JS/Main.js"></script>
 	
-	
+	<%
 	String place = request.getParameter("place");
 	if (place != null && !place.isEmpty()) {
-
-		Location loc = Lookup.lookupPlace(place); if (loc != null) {
-			double lat = loc.getLat();
-			double lon = loc.getLon();
-       	}
-        
-       }
+       	Location loc = Lookup.lookupPlace(place);
+       	if (loc != null) {
+        	double lat = loc.getLat();
+        	double lon = loc.getLon(); %>
+        	<script>gotoLoc(<%=lat%>, <%=lon%>);</script>
+       	<%}
+       }%>
 </body>
 </html>
